@@ -1,0 +1,36 @@
+var estaRodando = false;
+
+function Clicked() {
+  if (estaRodando == false) {
+    estaRodando = true
+    console.log("Rodando");
+    var button = document.getElementById("button");
+    var texto = document.getElementById("texto");
+    var resultado = document.getElementById("resultado");
+    
+    resultado.innerHTML = ""
+    
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min;
+    } 
+    var dado1 = getRandomInt(1,7);
+    var dado2 = getRandomInt(1,7);
+    
+    texto.innerHTML = "RODANDO"
+    setTimeout(function(){
+      estaRodando = false
+      texto.innerHTML = "Quer jogar?"
+      console.log("Você jogou " + dado1 + " e " + dado2)
+      if (dado1 == 6 & dado2 == 6) {
+        resultado.innerHTML = "Parabéns! você jogou 6 e 6!";
+      } else if (dado1 == dado2) {
+        resultado.innerHTML = "Você jogou um par! " + dado1 + " e " + dado1;
+      } else {
+        resultado.innerHTML = "Você jogou " + dado1 + " e " + dado2;
+      }
+      
+    },2000); 
+  } 
+}
